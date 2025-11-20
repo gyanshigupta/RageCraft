@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RageCraft - Awaken The Desert</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #f4c67f;
+            --gold-dark: #d4a574;
+            --indigo-deep: #0f1f2e;
+            --sand-light: #e8d7c3;
+            --text-light: #f5f1ed;
+            --overlay: rgba(0, 0, 0, 0.55);
+        }
+
+        body {
+            background-color: var(--indigo-deep);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--sand-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background Video */
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Overlay for readability */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.6),
+                rgba(0, 0, 0, 0.3)
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .subtitle {
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            color: var(--sand-light);
+        }
+
+        .hero-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.2rem;
+            text-transform: uppercase;
+            border: none;
+            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: black;
+            box-shadow: 0 8px 25px rgba(244,198,127,0.35);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold-dark);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(244,198,127,0.1);
+        }
+
+        /* ================= FEATURES ================= */
+        .features {
+            padding: 5rem 2rem;
+            background-color: #102331;
+        }
+
+        .features h2 {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border: 1px solid rgba(244,198,127,0.3);
+            background: rgba(255,255,255,0.05);
+            transition: 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #0b1822;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(244,198,127,0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">RAGECRAFT</a>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION WITH VIDEO -->
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="vidrc.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>Awaken The Desert</h1>
+            <p class="subtitle">A battle of gods and sand. Rise or be buried.</p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Play Now</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <h2>Experience Ancient Power</h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Mythic Gameplay</h3>
+                <p>Channel forgotten gods and unleash divine combat abilities.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Desert Realm</h3>
+                <p>Explore pyramids, ancient tombs, and sacred battlegrounds.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Divine Arsenal</h3>
+                <p>Master weapons blessed by ancient Egyptian deities.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 RageCraft — Awaken the Desert
+    </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RageCraft - A battle of gods and sand. Rise or be buried.">
+    <title>RageCraft - Awaken the Desert</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Egyptian Color Palette */
+            --sand-light: #e8d7c3;
+            --sand-dark: #8b7355;
+            --sepia: #6b5844;
+            --gold: #d4a574;
+            --gold-bright: #f4c67f;
+            --lapis: #1a3a52;
+            --indigo-deep: #0f1f2e;
+            --stone: #2a2a2a;
+            --overlay: rgba(15, 31, 46, 0.75);
+            --text-light: #f5f1ed;
+            --text-muted: #b8a89a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--indigo-deep);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        /* ==================== HEADER & NAVIGATION ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(15, 31, 46, 0.95), transparent);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--gold-bright);
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background-color: var(--gold-bright);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 1rem;
+                background: var(--indigo-deep);
+                padding: 2rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 1px solid var(--gold);
+            }
+
+            nav.active {
+                max-height: 300px;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            margin-top: -70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(15, 31, 46, 0.6) 0%, rgba(26, 58, 82, 0.5) 50%, rgba(107, 88, 68, 0.4) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(212, 165, 116, 0.03) 2px,
+                    rgba(212, 165, 116, 0.03) 4px
+                );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            color: var(--gold-bright);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            font-weight: 900;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--sand-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .cta-primary {
+            background-color: var(--gold-bright);
+            color: var(--indigo-deep);
+            box-shadow: 0 8px 25px rgba(244, 198, 127, 0.3);
+        }
+
+        .cta-primary:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(244, 198, 127, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--gold-bright);
+            border: 2px solid var(--gold-bright);
+            box-shadow: inset 0 0 20px rgba(212, 165, 116, 0.1);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(244, 198, 127, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ==================== FEATURES SECTION ==================== */
+        .features {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--indigo-deep) 0%, var(--lapis) 100%);
+            border-top: 1px solid var(--gold);
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold-bright);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(26, 58, 82, 0.6) 0%, rgba(107, 88, 68, 0.2) 100%);
+            border: 1px solid var(--gold);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(244, 198, 127, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold-bright);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(244, 198, 127, 0.2);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card h3 {
+            color: var(--gold-bright);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ==================== NEWS SECTION ==================== */
+        .news {
+            padding: 6rem 2rem;
+            background: var(--indigo-deep);
+        }
+
+        .news h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold-bright);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: linear-gradient(135deg, rgba(26, 58, 82, 0.5) 0%, rgba(42, 42, 42, 0.5) 100%);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--sand-dark) 0%, var(--sepia) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sand-light);
+            font-size: 3rem;
+        }
+
+        .news-card-content {
+            padding: 1.5rem;
+        }
+
+        .news-card-date {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .news-card h3 {
+            color: var(--gold-bright);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .news-card:hover {
+            border-color: var(--gold-bright);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(244, 198, 127, 0.15);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--stone);
+            border-top: 1px solid var(--gold);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--sand-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-bright);
+        }
+
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            padding-top: 2rem;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .features,
+            .news {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-ctas {
+                gap: 1rem;
+            }
+
+            .cta-btn {
+                padding: 0.75rem 1.75rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            margin-top: 40vh;
+            font-size: 3rem;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <a href="#" class="logo">RageCraft</a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#news">News</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            
+            <video autoplay muted loop playsinline>
+                <source src="RageCraft/vid" type="video/mp4">
+            </video>
+            <div class="hero-content">
+                <h1>Awaken the Desert<br>RageCraft</h1>
+                <p class="subtitle">A battle of gods and sand. Rise or be buried.</p>
+                <div class="hero-ctas">
+                    <button class="cta-btn cta-primary">Play Now</button>
+                    <button class="cta-btn cta-secondary">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <h2>Experience Ancient Power</h2>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <h3>Mythic Gameplay</h3>
+                    <p>Harness the power of forgotten gods and command the sands in epic multiplayer battles that redefine warfare.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Desert Realm</h3>
+                    <p>Explore vast pyramids, ancient tombs, and lost civilizations across meticulously crafted Egyptian landscapes.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Divine Arsenal</h3>
+                    <p>Unlock legendary weapons blessed by the gods, each with unique abilities and devastating power.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news" id="news">
+            <h2>Latest Updates</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-card-image">🏛️</div>
+                    <div class="news-card-content">
+                        <div class="news-card-date">November 15, 2025</div>
+                        <h3>Season of Pharaohs Launch</h3>
+                        <p>The new seasonal event brings exclusive cosmetics and a brand new pyramid-themed battleground to conquer.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-card-image">⚔️</div>
+                    <div class="news-card-content">
+                        <div class="news-card-date">November 10, 2025</div>
+                        <h3>Divine Weapons Update</h3>
+                        <p>Balance changes across all legendary weapons ensure fairness in combat while maintaining mythic power fantasies.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-card-image">🎮</div>
+                    <div class="news-card-content">
+                        <div class="news-card-date">November 8, 2025</div>
+                        <h3>New Game Mode: Tomb Raider</h3>
+                        <p>Compete in our intense new 8v8 mode where controlling ancient tombs is the key to victory.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#support">Support</a>
+                <a href="#social">Follow Us</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RageCraft. All rights reserved. Awaken the desert.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // CSS-only menu toggle (minimal JS for accessibility)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', 
+                menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+            );
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>

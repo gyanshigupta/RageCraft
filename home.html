@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="RageCraft - A battle of gods and sand. Rise or be buried." />
+    <title>RageCraft — Awaken the Desert</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+</head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Skip link for keyboard users -->
+    <a class="sr-only" href="#main-content">Skip to content</a>
+
+    <header>
+        <a href="#" class="logo" aria-label="RageCraft homepage">RageCraft</a>
+
+        <!-- mobile menu toggle -->
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-controls="site-nav" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="site-nav" role="navigation" aria-label="Main navigation" aria-expanded="false">
+            <a href="#features">Features</a>
+            <a href="#news">News</a>
+            <a href="about.html" target="_self">About</a>
+            <a href="contact.html" target="_self">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero__bg" aria-hidden="true">
+                <!-- Use your actual video filename; vidrc.mp4 is the original name I saw. -->
+                <video autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+                    <source src="vid.mp4" type="video/mp4" />
+                    <!-- Fallback / accessibility -->
+                </video>
+            </div>
+
+            <div class="hero__overlay" aria-hidden="true"></div>
+
+            <div class="hero-content" role="region" aria-labelledby="hero-title">
+                <h1 id="hero-title">Awaken the Desert — RageCraft</h1>
+                <p class="subtitle">A battle of gods and sand. Rise or be buried.</p>
+                <div class="hero-ctas">
+                    <button class="cta-btn cta-primary" type="button">Play Now</button>
+                    <button class="cta-btn cta-secondary" type="button">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="features" id="features" aria-labelledby="features-title">
+            <h2 id="features-title">Experience Ancient Power</h2>
+            <div class="features-grid">
+                <article class="feature-card" tabindex="0">
+                    <h3>Mythic Gameplay</h3>
+                    <p>Harness the power of forgotten gods and command the sands in epic multiplayer battles that redefine warfare.</p>
+                </article>
+                <article class="feature-card" tabindex="0">
+                    <h3>Desert Realm</h3>
+                    <p>Explore vast pyramids, ancient tombs, and lost civilizations across meticulously crafted Egyptian landscapes.</p>
+                </article>
+                <article class="feature-card" tabindex="0">
+                    <h3>Divine Arsenal</h3>
+                    <p>Unlock legendary weapons blessed by the gods, each with unique abilities and devastating power.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- NEWS -->
+        <section class="news" id="news" aria-labelledby="news-title">
+            <h2 id="news-title">Latest Updates</h2>
+            <div class="news-grid">
+                <article class="news-card" tabindex="0">
+                    <div class="news-card-image">🏛️</div>
+                    <div>
+                        <div class="news-card-date">November 15, 2025</div>
+                        <h3>Season of Pharaohs Launch</h3>
+                        <p>The new seasonal event brings exclusive cosmetics and a brand new pyramid-themed battleground to conquer.</p>
+                    </div>
+                </article>
+
+                <article class="news-card" tabindex="0">
+                    <div class="news-card-image">⚔️</div>
+                    <div>
+                        <div class="news-card-date">November 10, 2025</div>
+                        <h3>Divine Weapons Update</h3>
+                        <p>Balance changes across all legendary weapons ensure fairness in combat while maintaining mythic power fantasies.</p>
+                    </div>
+                </article>
+
+                <article class="news-card" tabindex="0">
+                    <div class="news-card-image">🎮</div>
+                    <div>
+                        <div class="news-card-date">November 8, 2025</div>
+                        <h3>New Game Mode: Tomb Raider</h3>
+                        <p>Compete in our intense new 8v8 mode where controlling ancient tombs is the key to victory.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#support">Support</a>
+            <a href="#social">Follow Us</a>
+        </div>
+        <div style="text-align:center;color:var(--text-muted);font-size:.95rem;">
+            &copy; 2025 RageCraft. All rights reserved. Awaken the desert.
+        </div>
+    </footer>
+
+    <script>
+        // Robust mobile menu logic (safe checks)
+        (function(){
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.getElementById('site-nav');
+
+            if (!menuToggle || !nav) return;
+
+            function setNavExpanded(expanded){
+                const val = expanded ? 'true' : 'false';
+                menuToggle.setAttribute('aria-expanded', val);
+                nav.setAttribute('aria-expanded', val);
+                if (expanded) {
+                    menuToggle.classList.add('active');
+                } else {
+                    menuToggle.classList.remove('active');
+                }
+            }
+
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                setNavExpanded(!isExpanded);
+            });
+
+            // Close menu when clicking a nav link (also accessible)
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => setNavExpanded(false));
+            });
+
+            // Close menu on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') setNavExpanded(false);
+            });
+        })();
+    </script>
+
+</body>
+</html>

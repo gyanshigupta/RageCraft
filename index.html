@@ -336,7 +336,7 @@
             font-size: clamp(1.25rem, 3vw, 1.75rem);
         }
 
-        /* ==================== HEADER & NAVIGATION ==================== */
+   
         header {
             position: fixed;
             top: 0;
@@ -724,7 +724,6 @@
             padding-top: 2rem;
         }
 
-        /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
             header {
                 padding: 1rem 1.5rem;
@@ -788,7 +787,7 @@
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+
     <header>
         <a href="#" class="logo">RageCraft</a>
         <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -805,7 +804,7 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+
         <section class="hero" id="hero">
             
             <video autoplay muted loop playsinline>
@@ -821,7 +820,7 @@
             </div>
         </section>
 
-        <!-- Features Section -->
+
         <section class="features" id="features">
             <h2>Experience Ancient Power</h2>
             <div class="features-grid">
@@ -840,7 +839,7 @@
             </div>
         </section>
 
-        <!-- News Section -->
+  
         <section class="news" id="news">
             <h2>Latest Updates</h2>
             <div class="news-grid">
@@ -872,7 +871,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
+
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-links">
@@ -888,7 +887,7 @@
     </footer>
 
     <script>
-        // CSS-only menu toggle (minimal JS for accessibility)
+
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
@@ -900,7 +899,6 @@
             );
         });
 
-        // Close menu when clicking a link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');

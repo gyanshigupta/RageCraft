@@ -290,7 +290,7 @@
         }
 
         :root {
-            /* Egyptian Color Palette */
+            
             --sand-light: #e8d7c3;
             --sand-dark: #8b7355;
             --sepia: #6b5844;
@@ -316,7 +316,7 @@
             overflow-x: hidden;
         }
 
-        /* Typography */
+    
         h1, h2, h3 {
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -359,7 +359,6 @@
             text-decoration: none;
         }
 
-        /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -446,7 +445,7 @@
             }
         }
 
-        /* ==================== HERO SECTION ==================== */
+        
         .hero {
             position: relative;
             width: 100%;
@@ -557,7 +556,6 @@
             transform: translateY(-3px);
         }
 
-        /* ==================== FEATURES SECTION ==================== */
         .features {
             padding: 6rem 2rem;
             background: linear-gradient(180deg, var(--indigo-deep) 0%, var(--lapis) 100%);
@@ -618,8 +616,6 @@
             color: var(--text-muted);
             line-height: 1.7;
         }
-
-        /* ==================== NEWS SECTION ==================== */
         .news {
             padding: 6rem 2rem;
             background: var(--indigo-deep);
@@ -885,27 +881,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            nav.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', 
-                menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-            );
-        });
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                nav.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-    </script>
 </body>
 </html>

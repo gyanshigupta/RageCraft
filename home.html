@@ -124,41 +124,5 @@
         </div>
     </footer>
 
-    <script>
-        // Robust mobile menu logic (safe checks)
-        (function(){
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.getElementById('site-nav');
-
-            if (!menuToggle || !nav) return;
-
-            function setNavExpanded(expanded){
-                const val = expanded ? 'true' : 'false';
-                menuToggle.setAttribute('aria-expanded', val);
-                nav.setAttribute('aria-expanded', val);
-                if (expanded) {
-                    menuToggle.classList.add('active');
-                } else {
-                    menuToggle.classList.remove('active');
-                }
-            }
-
-            menuToggle.addEventListener('click', () => {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                setNavExpanded(!isExpanded);
-            });
-
-            // Close menu when clicking a nav link (also accessible)
-            nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => setNavExpanded(false));
-            });
-
-            // Close menu on Escape
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') setNavExpanded(false);
-            });
-        })();
-    </script>
-
 </body>
 </html>
